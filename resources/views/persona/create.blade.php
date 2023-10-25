@@ -5,7 +5,7 @@
 
 <form action="{{url ('/persona')}}" method="post">
 @csrf
-@include('persona.form',['modo'=>'Crear'] );
+@include('persona.form',['modo'=>'Registrar'] );
 
 
 </form>

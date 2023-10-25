@@ -7,11 +7,27 @@
 {{Session::get('mensaje')}}
 @endif
 
-<a href= "{{url('persona/create')}}" class="btn btn-success"  >Registrar nuevo usuario </a> <br> <br>
+<div class="container-fluid">
+        <div class="row">
+        <div class="col-sm-10" style="margin:auto">
+            <span id="card_title "  >
+                                {{ __('Usuarios') }}
+
+                            </span>
+
+                           
+             
 
 
-<table class="table table-light">
-    <thead class="thead-light">
+          <div class="card">
+              <div class="card-header"><a href= "{{url('persona/create')}}" class="btn btn-success"  >Registrar nuevo usuario </a> <br></div>
+               <div style="display: flex; justify-content: space-between; align-items: center;">
+
+<div class="card-body">
+    
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead">
         <tr>
             <th>#</th>
             <th>nombre</th>
@@ -33,6 +49,8 @@
             <td>{{$persona-> telefono}}</td>
             <td>{{$persona-> Direccion}}</td>
             <td> 
+
+            
              <a href=" {{url('/persona/'.$persona ->id.'/edit') }}" class="btn btn-warning">
             Editar </a>
             | 
@@ -47,7 +65,12 @@
         </tr>
         @endforeach
     </tbody>
-</table>
+
 {!!$personas->links() !!}
 </div>
+</div>
+</div>
+</div>
 @endsection
+
+

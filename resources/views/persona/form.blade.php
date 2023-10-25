@@ -1,4 +1,4 @@
-<h1> {{$modo}} persona </h1>
+<h2 style="margin-left:100px"> {{$modo}}  persona </h2>
 
 @if(count($errors)>0)
 
@@ -13,14 +13,17 @@
 
 
 @endif
+<div class="container-fluid">
+<div class="row">
+        <div class="col-sm-10" style="margin:auto">
 
-<div class="form-group">
+<div class="form-group  ">
 <label for="Nombre"> Nombre </label>
 <input type="text" class="form-control" name="nombre" value="{{ isset($persona->nombre)?$persona->nombre:old('nombre') }}"><br>
 
 </div>
 
-<div class="form-group">
+<div class="form-group ">
 <label for="CorreoElectronico"> Correo Electronico </label>
 <input type="text" class="form-control" name="CorreoElectronico" value="{{ isset($persona->CorreoElectronico)?$persona->CorreoElectronico:old('CorreoElectronico')}}"><br>
 </div>
@@ -38,3 +41,7 @@
 <input class="btn btn-success " type="submit" value="{{ $modo }} datos ">
 
 <a class="btn btn-primary d-inline" href= "{{url('persona/')}}"> Regresar</a>
+
+</div>
+</div>
+</div>

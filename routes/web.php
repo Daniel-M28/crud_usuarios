@@ -25,6 +25,15 @@ Route::get('/', function () {
 Route::get('persona/create', [PersonaController::class,'create']); */
 
 Route::resource ('persona', PersonaController::class)-> middleware('auth');
+
+Route::resource ('citas', App\Http\Controllers\CitaController::class)-> middleware('auth');
+
+Route::resource ('inventario', App\Http\Controllers\InventarioController::class)-> middleware('auth');
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', [PersonaController::class, 'index'])->name('home');
@@ -33,3 +42,6 @@ Route::group(['middleware' => 'auth'],function () {
     Route::get('/', [PersonaController::class, 'index'])->name('home');
     
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
