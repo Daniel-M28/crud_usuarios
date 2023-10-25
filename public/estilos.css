@@ -5,7 +5,24 @@ font-size:15px
 
 }
 
-
+.contenedor-header {
+    background-color: #fff;
+    
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 2;}
+    
+    
+    .header1{
+    display: inline-block;
+    position: relative;
+       
+    }
+    
+    .img1{
+    height: 60px;
+    width: 90px;}
 
 .titulo {
 position: absolute;
