@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $inventario->name ?? "{{ __('Show') Inventario" }}
+    {{ $usuario->name ?? "{{ __('Show') Usuario" }}
 @endsection
 
 @section('content')
@@ -11,34 +11,30 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Ver producto') }} </span>
+                            <span class="card-title">{{ __('Ver') }} usuario</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('inventario.index') }}"> {{ __('Regresar') }}</a>
+                            <a class="btn btn-primary" href="{{ route('usuario.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Codigo:</strong>
-                            {{ $inventario->codigo }}
+                            <strong>Nombre:</strong>
+                            {{ $usuario->Nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Producto:</strong>
-                            {{ $inventario->producto }}
+                            <strong>Correoelectronico:</strong>
+                            {{ $usuario->CorreoElectronico }}
                         </div>
                         <div class="form-group">
-                            <strong>Existencias:</strong>
-                            {{ $inventario->existencias }}
+                            <strong>Telefono:</strong>
+                            {{ $usuario->Telefono }}
                         </div>
                         <div class="form-group">
-                            <strong>Entradas:</strong>
-                            {{ $inventario->entradas }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Salidas:</strong>
-                            {{ $inventario->salidas }}
+                            <strong>Direccion:</strong>
+                            {{ $usuario->Direccion }}
                         </div>
 
                     </div>

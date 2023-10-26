@@ -48,7 +48,7 @@ class CitaController extends Controller
         $cita = Cita::create($request->all());
 
         return redirect()->route('citas.index')
-            ->with('success', 'Cita created successfully.');
+            ->with('success', 'Cita creada con exito');
     }
 
     /**
@@ -91,7 +91,7 @@ class CitaController extends Controller
         $cita->update($request->all());
 
         return redirect()->route('citas.index')
-            ->with('success', 'Cita updated successfully');
+            ->with('success', 'Cita actualizada con exito');
     }
 
     /**
@@ -104,6 +104,6 @@ class CitaController extends Controller
         $cita = Cita::find($id)->delete();
 
         return redirect()->route('citas.index')
-            ->with('success', 'Cita deleted successfully');
+            ->with('success', 'Cita eliminada con exito');
     }
 }

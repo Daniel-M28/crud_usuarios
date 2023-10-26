@@ -1,25 +1,24 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Cita
+    Usuario
 @endsection
 
 @section('content')
-</ul>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-8" style="margin:auto">
 
-          
+            
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                          
+                           
 
                              <div class="float-right">
-                                <a href="{{ route('citas.create') }}" class="btn btn-success  float-right"  data-placement="left">
-                                  {{ __('Agendar Cita') }}
+                                <a href="{{ route('usuario.create') }}" class="btn btn-success  float-right"  data-placement="left">
+                                  {{ __('Registrar usuario') }}
                                 </a>
                               </div>
                         </div>
@@ -38,29 +37,31 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
-										<th>Cedula</th>
-										<th>Fecha</th>
+										<th>Correoelectronico</th>
+										<th>Telefono</th>
+										<th>Direccion</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($citas as $cita)
+                                    @foreach ($usuarios as $usuario)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $cita->nombre }}</td>
-											<td>{{ $cita->cedula }}</td>
-											<td>{{ $cita->fecha }}</td>
+											<td>{{ $usuario->Nombre }}</td>
+											<td>{{ $usuario->CorreoElectronico }}</td>
+											<td>{{ $usuario->Telefono }}</td>
+											<td>{{ $usuario->Direccion }}</td>
 
                                             <td>
-                                                <form action="{{ route('citas.destroy',$cita->id) }}" method="POST">
-                                                    <a class="btn btn-primary " href="{{ route('citas.show',$cita->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('ver') }}</a>
-                                                    <a class="btn btn-warning" href="{{ route('citas.edit',$cita->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                <form action="{{ route('usuario.destroy',$usuario->id) }}" method="POST">
+                                                    <a class="btn  btn-primary " href="{{ route('usuario.show',$usuario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn  btn-warning" href="{{ route('usuario.edit',$usuario->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    
                                                     <input class="btn btn-danger" type="submit" onclick="return confirm ('¿deseas borrar?')"  value="Borrar">
+                                                   
                                                 </form>
                                             </td>
                                         </tr>
@@ -70,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $citas->links() !!}
+                {!! $usuarios->links() !!}
             </div>
         </div>
     </div>

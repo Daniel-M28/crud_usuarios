@@ -31,7 +31,7 @@ Route::resource ('citas', App\Http\Controllers\CitaController::class)-> middlewa
 Route::resource ('inventario', App\Http\Controllers\InventarioController::class)-> middleware('auth');
 
 
-
+Route::resource ('usuario', App\Http\Controllers\UsuarioController::class)-> middleware('auth');
 
 
 Auth::routes();

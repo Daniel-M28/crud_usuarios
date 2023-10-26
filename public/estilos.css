@@ -39,9 +39,11 @@ margin-left: 190px;
 width: 100%;
 }
 
-.barra-lateral{display: flex;
+.barra-lateral{
+position: fixed;
+display: flex;
 background-color: #007BFF;
-height: 603px;
+height: 110%;
 width: 200px;
 position: absolute;
 top: 174px;

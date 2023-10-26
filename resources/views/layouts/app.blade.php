@@ -43,8 +43,8 @@
         
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm" style="margin-top:60px;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/inicio') }}">
-                    {{ config('Sofarmatic', 'Sofarmatic') }}
+                <a class="navbar-brand" style="margin-left:-75px" href="{{ url('/persona') }}">
+                    {{ config('Sofarmatic', 'Sofarmaticcc') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -53,18 +53,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" >
 
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto" >
-                     <li class="nav-item" style="display:flex">
+                    <ul class="navbar-nav mr-auto"  >
+                     <li class="nav-item" style="display:flex; padding-left: 60px; ">
+
+                     <a class="nav-link " style="margin-right:20px " href="{{ route('persona.index') }}">{{ __('inicio') }}</a>
                      
-                     <a class="nav-link " href="{{ route('persona.index') }}">{{ __('personas') }}</a>
+                     <a class="nav-link" style="margin-right:20px " href="{{ route('usuario.index') }}">{{ __('usuarios') }}</a>
+
+                   
                      
-                     <a class="nav-link " href="{{ route('citas.index') }}">{{ __('citas') }}</a>
+                     <a class="nav-link " style="margin-right:20px " href="{{ route('citas.index') }}">{{ __('citas') }}</a>
                      
 
-                     <a class="nav-link " href="{{ route('inventario.index') }}">{{ __('inventario') }}</a>
+                     <a class="nav-link " style="margin-right:720px " href="{{ route('inventario.index') }}">{{ __('inventario') }}</a>
 
-                    
-                     </li>
+                     
+                     
+                    </li>
 
 
 
@@ -72,7 +77,7 @@
 
                     
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto " >
                         
                     
                         <!-- Authentication Links -->
@@ -80,19 +85,19 @@
                   
                         @guest
                             @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <li class="nav-item "  >
+                                    <a class="nav-link"  href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li class="nav-item" >
+                                    <a class="nav-link"  href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown" >
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -120,7 +125,7 @@
 <div class="barra-lateral">
        <ul>
         <li>Tienda</li>
-        <li>Ceritificados medicos</li>
+        <li>Certificados medicos</li>
         <li>Preguntas frecuentes</li>
         <li>PQRS</li>
 

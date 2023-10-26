@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventario;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 /**
- * Class InventarioController
+ * Class UsuarioController
  * @package App\Http\Controllers
  */
-class InventarioController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $inventarios = Inventario::paginate();
+        $usuarios = Usuario::paginate();
 
-        return view('inventario.index', compact('inventarios'))
-            ->with('i', (request()->input('page', 1) - 1) * $inventarios->perPage());
+        return view('usuario.index', compact('usuarios'))
+            ->with('i', (request()->input('page', 1) - 1) * $usuarios->perPage());
     }
 
     /**
@@ -31,8 +31,8 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        $inventario = new Inventario();
-        return view('inventario.create', compact('inventario'));
+        $usuario = new Usuario();
+        return view('usuario.create', compact('usuario'));
     }
 
     /**
@@ -43,12 +43,12 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Inventario::$rules);
+        request()->validate(Usuario::$rules);
 
-        $inventario = Inventario::create($request->all());
+        $usuario = Usuario::create($request->all());
 
-        return redirect()->route('inventario.index')
-            ->with('success', 'Producto agregado con exito');
+        return redirect()->route('usuario.index')
+            ->with('success', 'Usuario creado con exito.');
     }
 
     /**
@@ -59,9 +59,9 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        $inventario = Inventario::find($id);
+        $usuario = Usuario::find($id);
 
-        return view('inventario.show', compact('inventario'));
+        return view('usuario.show', compact('usuario'));
     }
 
     /**
@@ -72,26 +72,26 @@ class InventarioController extends Controller
      */
     public function edit($id)
     {
-        $inventario = Inventario::find($id);
+        $usuario = Usuario::find($id);
 
-        return view('inventario.edit', compact('inventario'));
+        return view('usuario.edit', compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Inventario $inventario
+     * @param  Usuario $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventario $inventario)
+    public function update(Request $request, Usuario $usuario)
     {
-        request()->validate(Inventario::$rules);
+        request()->validate(Usuario::$rules);
 
-        $inventario->update($request->all());
+        $usuario->update($request->all());
 
-        return redirect()->route('inventario.index')
-            ->with('success', 'Producto actualizado con exito');
+        return redirect()->route('usuario.index')
+            ->with('success', 'Usuario actualizado con exito');
     }
 
     /**
@@ -101,9 +101,9 @@ class InventarioController extends Controller
      */
     public function destroy($id)
     {
-        $inventario= Inventario::find($id)->delete();
+        $usuario = Usuario::find($id)->delete();
 
-        return redirect()->route('inventario.index')
-            ->with('success', 'Producto eliminado con exito');
+        return redirect()->route('usuario.index')
+            ->with('success', 'Usuario eliminado con exito');
     }
 }
