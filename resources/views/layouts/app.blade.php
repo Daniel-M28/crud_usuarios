@@ -18,6 +18,8 @@
 
     <title>{{ config('app.name', 'Sofarmatic') }}</title>
 
+    <link rel="stylesheet" href="{{ asset('estilos.css') }}">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -27,7 +29,7 @@
     <!-- <link rel="stylesheet" href="./estilos.css" />
     <link rel="stylesheet" href="../estilos.css" /> */ -->
     
-    <link rel="stylesheet" href="{{ asset('estilos.css') }}">
+  
 
 </head>
 <body>
@@ -44,7 +46,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm" style="margin-top:60px;">
             <div class="container">
                 <a class="navbar-brand" style="margin-left:-75px" href="{{ url('/persona') }}">
-                    {{ config('Sofarmatic', 'Sofarmaticcc') }}
+                    {{ config('Sofarmatic', 'Sofarmatic') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -56,7 +58,8 @@
                     <ul class="navbar-nav mr-auto"  >
                      <li class="nav-item" style="display:flex; padding-left: 60px; ">
 
-                     <a class="nav-link " style="margin-right:20px " href="{{ route('persona.index') }}">{{ __('inicio') }}</a>
+                     
+                     <a class="nav-link" style="margin-right:20px " href="{{ route('inicio') }}">{{ __('inicio') }}</a>
                      
                      <a class="nav-link" style="margin-right:20px " href="{{ route('usuario.index') }}">{{ __('usuarios') }}</a>
 
@@ -124,10 +127,11 @@
        <!--Sidebar -->
 <div class="barra-lateral">
        <ul>
-        <li>Tienda</li>
+       <li ><a href="http://localhost/usuarios/public/tienda"> tienda</a> </li>
         <li>Certificados medicos</li>
         <li>Preguntas frecuentes</li>
         <li>PQRS</li>
+        
 
 </div>
 

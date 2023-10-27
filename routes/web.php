@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,15 @@ Route::get('/', function () {
 
 Route::get('persona/create', [PersonaController::class,'create']); */
 
-Route::resource ('persona', PersonaController::class)-> middleware('auth');
+Route::get('/inicio', function () {
+    return view('inicio');
+})->name('inicio')->middleware('auth');;
+
+Route::get('/tienda', function () {
+    return view('tienda');
+})->name('tienda')->middleware('auth');;
+
+
 
 Route::resource ('citas', App\Http\Controllers\CitaController::class)-> middleware('auth');
 
@@ -36,12 +44,10 @@ Route::resource ('usuario', App\Http\Controllers\UsuarioController::class)-> mid
 
 Auth::routes();
 
-Route::get('/home', [PersonaController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'],function () {
-    Route::get('/', [PersonaController::class, 'index'])->name('home');
-    
+Route::group(['middleware' => 'auth'], function () {
+    // Redirige a la página de inicio después de iniciar sesión
+    Route::get('/', function () {
+        return view('inicio');
+    })->name('home');
 });
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
