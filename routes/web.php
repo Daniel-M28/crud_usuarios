@@ -32,6 +32,10 @@ Route::get('/tienda', function () {
     return view('tienda');
 })->name('tienda')->middleware('auth');;
 
+Route::get('/carrito', function () {
+    return view('carrito');
+})->name('carrito')->middleware('auth');;
+
 
 
 Route::resource ('citas', App\Http\Controllers\CitaController::class)-> middleware('auth');
