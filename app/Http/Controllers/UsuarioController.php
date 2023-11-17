@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 /**
  * Class UsuarioController
  * @package App\Http\Controllers
@@ -64,17 +65,22 @@ class UsuarioController extends Controller
         return view('usuario.show', compact('usuario'));
     }
 
+
+    
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user)
     {
-        $usuario = Usuario::find($id);
+       $roles = Role::all();
 
-        return view('usuario.edit', compact('usuario'));
+
+        $usuario = Usuario::find($user);
+
+        return view('usuario.edit', compact('usuario', 'roles'));
     }
 
     /**
@@ -84,8 +90,14 @@ class UsuarioController extends Controller
      * @param  Usuario $usuario
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function update(Request $request, Usuario $usuario)
     {
+          
+          
+
         request()->validate(Usuario::$rules);
 
         $usuario->update($request->all());
@@ -94,6 +106,8 @@ class UsuarioController extends Controller
             ->with('success', 'Usuario actualizado con exito');
     }
 
+
+    
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse

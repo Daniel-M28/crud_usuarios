@@ -56,12 +56,12 @@
 
                                             <td>
                                                 <form action="{{ route('usuario.destroy',$usuario->id) }}" method="POST">
-                                                    <a class="btn  btn-primary " href="{{ route('usuario.show',$usuario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn  btn-primary " href="{{ route('usuario.show',$usuario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('ver') }}</a>
                                                     <a class="btn  btn-warning" href="{{ route('usuario.edit',$usuario->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <input class="btn btn-danger" type="submit" onclick="return confirm ('¿deseas borrar?')"  value="Borrar">
-                                                   
+                                                    
                                                 </form>
                                             </td>
                                         </tr>

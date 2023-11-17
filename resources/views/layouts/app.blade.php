@@ -60,16 +60,13 @@
 
                      
                      <a class="nav-link" style="margin-right:20px " href="{{ route('inicio') }}">{{ __('inicio') }}</a>
-                     
+                     @can ('inventario.index')
                      <a class="nav-link" style="margin-right:20px " href="{{ route('usuario.index') }}">{{ __('usuarios') }}</a>
-
+                     @endcan
                    
-                     
-                     <a class="nav-link " style="margin-right:20px " href="{{ route('citas.index') }}">{{ __('citas') }}</a>
-                     
-
-                     <a class="nav-link " style="margin-right:680px " href="{{ route('inventario.index') }}">{{ __('inventario') }}</a>
-
+                      @can ('inventario.index')
+                     <a class="nav-link " style="margin-right:580px " href="{{ route('inventario.index') }}">{{ __('inventario') }}</a>
+                      @endcan
                      
                      
                     </li>
@@ -125,24 +122,48 @@
 
 
        <!--Sidebar -->
+       <div class="contenedor-plantilla">
 <div class="barra-lateral">
        <ul>
-        <li ><a style="color:white; text-decoration:none" href="http://localhost/usuarios/public/tienda"> tienda</a> </li>
-        <li>Certificados medicos</li>
-        <li>Preguntas frecuentes</li>
-        <li>PQRS</li>
+        <li><a style="color:white; text-decoration:none " href="{{ route('tienda')}}"> tienda</a> </li>
+        <li><a style="color:white; text-decoration:none " href="{{ route('citas.index')}} ">Citas medicas </a></li>
+        <li><a style="color:white; text-decoration:none " href="{{ route('preguntas')}}">Preguntas frecuentes</a></li>
+       
+       @can ('update')
+        <li><a style="color:white; text-decoration:none " href="{{ route('pqrs')}}">PQRS </a></li>
+        @endcan
         
+    </ul>
 
 </div>
 
-       </ul>
+      
 
 
-        <main class="py-4">
+        <main class="py-4 contenido-plantilla">
         @yield('content')
         </main>
 
        
+        </div>
+
+        <script>
+
+// Función para igualar la altura de la barra lateral y el contenido
+function equalizeHeight() {
+  var barraLateral = document.querySelector('.barra-lateral');
+  var contenidoPlantilla = document.querySelector('.contenido-plantilla');
+
+  var max_height = Math.max(barraLateral.clientHeight, contenidoPlantilla.clientHeight);
+  barraLateral.style.minHeight = max_height + 'px';
+  contenidoPlantilla.style.minHeight = max_height + 'px';
+}
+
+equalizeHeight();
+window.addEventListener('resize', equalizeHeight);
+</script>
+
+    
 
     </div>
 

@@ -8,17 +8,17 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     */
+     */ 
     public function up(): void
-    {  Schema::create('usuarios', function (Blueprint $table) {
+    {   Schema::create('usuarios', function (Blueprint $table) {
         $table->id();
         $table->string ('Nombre');
         $table->string ('CorreoElectronico');
-        $table->string ('Telefono');
-        $table->string ('Direccion');
-        $table->timestamps();
+        $table->string ('Telefono')-> nullable();
+        $table->string ('Direccion')-> nullable();
+        $table->timestamps(); 
     });
-        //
+        
     }
 
     /**

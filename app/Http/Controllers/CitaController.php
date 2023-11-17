@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class CitaController
@@ -18,10 +20,20 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $citas = Cita::paginate();
+       // Obtener el usuario autenticado
+       $user = Auth::user();
 
-        return view('cita.index', compact('citas'))
-            ->with('i', (request()->input('page', 1) - 1) * $citas->perPage());
+       // Verificar el rol del usuario
+       if ($user->hasRole('admin')) {
+           // Si es administrador, mostrar todas las citas
+           $citas = Cita::paginate();
+       } else {
+           // Si es usuario, mostrar solo sus propias citas
+           $citas = Cita::where('user_id', $user->id)->paginate();
+       }
+
+       return view('cita.index', compact('citas'))
+           ->with('i', (request()->input('page', 1) - 1) * $citas->perPage());
     }
 
     /**
@@ -45,11 +57,13 @@ class CitaController extends Controller
     {
         request()->validate(Cita::$rules);
 
-        $cita = Cita::create($request->all());
+    $cita = new Cita($request->all());
+    $cita->user_id = Auth::id(); // Asigna el ID del usuario autenticado
+    $cita->save();
 
-        return redirect()->route('citas.index')
-            ->with('success', 'Cita creada con exito');
-    }
+    return redirect()->route('citas.index')
+        ->with('success', 'Cita creada con éxito');
+}
 
     /**
      * Display the specified resource.

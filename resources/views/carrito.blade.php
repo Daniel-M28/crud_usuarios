@@ -15,9 +15,9 @@
 
 </div>
 
-<div id="titulo2-carrito" class="titulo2-carrito "> <h2 class="titulo-compra-carro">carrito de compras</h2> 
+<div id="titulo2-carrito" class="titulo2-carrito "> <h2 class="titulo-compra-carro"></h2> 
 
-<p class="carro-compra"> Gracias por tu compra  <i class="fa-regular fa-face-laugh-beam"></i></p> 
+<p class="carro-compra">  <i class="fa-regular fa-face-laugh-beam"></i></p> 
 
 </div>
 

@@ -7,6 +7,7 @@
 
 
     <div class="contenido-ventas">
+ 
 
 <div  class="menu-lateral-ventas">
     <ul>
@@ -36,9 +37,10 @@
 
 
 
+
 </div>
 
-
+<div class="paginacion" style="margin-top: 30px; margin-left:720px "></div>
 <script src="{{ asset('ventas.js') }}"></script>
 
 @endsection

@@ -19,6 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cita extends Model
 {
+
+  public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
     static $rules = [
 		'nombre' => 'required',
@@ -35,6 +40,7 @@ class Cita extends Model
      */
     protected $fillable = ['nombre','cedula','fecha'];
 
+    
 
 
-}
+};

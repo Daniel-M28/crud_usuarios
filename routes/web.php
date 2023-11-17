@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
 });
 
 Route::get('persona/create', [PersonaController::class,'create']); */
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 
 Route::get('/inicio', function () {
     return view('inicio');
@@ -36,14 +38,24 @@ Route::get('/carrito', function () {
     return view('carrito');
 })->name('carrito')->middleware('auth');;
 
+Route::get('/preguntas', function () {
+    return view('preguntas');
+})->name('preguntas')->middleware('auth');;
+
+Route::get('/pqrs', function () {
+    return view('pqrs');
+})->name('pqrs')->middleware('auth');;
+
+
+
 
 
 Route::resource ('citas', App\Http\Controllers\CitaController::class)-> middleware('auth');
 
-Route::resource ('inventario', App\Http\Controllers\InventarioController::class)-> middleware('auth');
+Route::resource ('inventario', App\Http\Controllers\InventarioController::class)-> middleware(['auth','can:inventario.index']);
 
 
-Route::resource ('usuario', App\Http\Controllers\UsuarioController::class)-> middleware('auth');
+Route::resource ('usuario', App\Http\Controllers\UsuarioController::class)->middleware(['auth','can:usuario.index']);
 
 
 Auth::routes();

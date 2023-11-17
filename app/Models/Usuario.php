@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
+
 
 /**
  * Class Usuario
@@ -20,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Usuario extends Model
 {
-    
+  use HasRoles;
     static $rules = [
 		'Nombre' => 'required',
 		'CorreoElectronico' => 'required',

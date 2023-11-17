@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::table('citas', function (Blueprint $table) {
+            $table->dateTime('fecha')->change();
+        });
         
-        Schema::create('citas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string ('nombre');
-            $table->string('cedula');
-            $table->date('fecha');
-            $table->timestamps();
-        }); 
     }
 
     /**
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+       
     }
 };

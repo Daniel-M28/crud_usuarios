@@ -52,16 +52,21 @@
 											<td>{{ $cita->nombre }}</td>
 											<td>{{ $cita->cedula }}</td>
 											<td>{{ $cita->fecha }}</td>
-
-                                            <td>
+                                            
+                                           
+                                            <td>  
                                                 <form action="{{ route('citas.destroy',$cita->id) }}" method="POST">
-                                                    <a class="btn btn-primary " href="{{ route('citas.show',$cita->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('ver') }}</a>
+                                                    
+                                               <a class="btn btn-primary " href="{{ route('citas.show',$cita->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('ver') }}</a>
                                                     <a class="btn btn-warning" href="{{ route('citas.edit',$cita->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     
+                                                    
                                                     <input class="btn btn-danger" type="submit" onclick="return confirm ('¿deseas borrar?')"  value="Borrar">
+                                        
                                                 </form>
+                                               
                                             </td>
                                         </tr>
                                     @endforeach

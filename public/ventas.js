@@ -500,34 +500,87 @@ const productos = [{
           numero.innerText= nuevoNumero;
     }
     
-     
+
+
+    const productosPorPagina = 8;
+let paginaActual = 1;
+
+function paginarProductos(productos, pagina) {
+  const inicio = (pagina - 1) * productosPorPagina;
+  return productos.slice(inicio, inicio + productosPorPagina);
+}
+
+function cargarProductos(productosElegidos) {
+  contenedorProductos.innerHTML = "";
+  productosElegidos.forEach(producto => {
+    const div = document.createElement("div");
+    div.classList.add("producto");
+    div.innerHTML = `
+        <img class="img-producto" src="${producto.imagen}">
+        <div class="detalles-producto">
+            <h2 style="font-size: 20px;">${producto.titulo}</h2>
+            <p>${"$" + producto.precio}</p>
+            <button class="boton-compra" id="${producto.id}">Agregar</button>
+        </div>
+    `;
+    contenedorProductos.appendChild(div);
+  });
+  actualizarBotonesAgregar();
+}
+
+function actualizarPaginacion(productos) {
+  const paginacion = document.querySelector(".paginacion");
+  const numPaginas = Math.ceil(productos.length / productosPorPagina);
+  
+  paginacion.innerHTML = Array.from({ length: numPaginas }, (_, i) => {
+    const numeroPagina = i + 1;
+    return `
+      <button  class="btn btn-primary pagina${paginaActual === numeroPagina ? ' activa' : ''}">${numeroPagina}</button>
+    `;
+  }).join('');
+
+  const botonesPagina = document.querySelectorAll(".paginacion button");
+  botonesPagina.forEach((boton, index) => {
+    boton.addEventListener("click", () => {
+      paginaActual = index + 1;
+      const productosMostrados = paginarProductos(productos, paginaActual);
+      cargarProductos(productosMostrados);
+      actualizarPaginacion(productos);
+    });
+  });
+}
+
+function inicializar() {
+  cargarProductos(paginarProductos(productos, paginaActual));
+
+  botonesCategorias.forEach(boton => {
+    boton.addEventListener("click", (e) => {
+      const categoriaId = e.currentTarget.id;
+      const productosFiltrados = categoriaId === "todos"
+        ? productos
+        : productos.filter(producto => producto.categoria.id === categoriaId);
+      
+      tituloPrincipal.innerText = categoriaId === "todos" ? "Todos los productos" : productosFiltrados[0].categoria.nombre;
+
+      paginaActual = 1;
+      cargarProductos(paginarProductos(productosFiltrados, paginaActual));
+      actualizarPaginacion(productosFiltrados);
+    });
+  });
+
+  actualizarBotonesAgregar();
+  actualizarPaginacion(productos);
+}
+
+inicializar();
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     
     
     

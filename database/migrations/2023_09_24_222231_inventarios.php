@@ -10,7 +10,7 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    { 
         Schema::create('inventarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string ('codigo');
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('entradas');
             $table->string('salidas');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
